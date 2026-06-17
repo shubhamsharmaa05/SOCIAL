@@ -4,6 +4,8 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 import { useAuthStore } from '../store/authStore';
 import { Sparkles, ArrowRight, AlertCircle, ChevronLeft } from 'lucide-react';
+import { jwtDecode } from 'jwt-decode';
+import authService from '../services/authService';
 
 const GoogleIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
@@ -29,8 +31,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, socialLogin } = useAuthStore();
 
-  const handleSocialLogin = (provider) => {
-    socialLogin(provider);
+  const handleSocialLogin = (provider, userData = null) => {
+    socialLogin(provider, userData);
     navigate('/dashboard');
   };
 
@@ -119,10 +121,22 @@ const Login = () => {
             <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all">
               <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
                 <GoogleLogin
-                  onSuccess={(credentialResponse) => {
+                  onSuccess={async (credentialResponse) => {
                     console.log("Google Login Success:", credentialResponse);
-                    // For now, immediately redirect to dashboard
-                    handleSocialLogin('google');
+                    try {
+                      const decoded = jwtDecode(credentialResponse.credential);
+                      const profileData = {
+                        email: decoded.email,
+                        google_id: decoded.sub,
+                        full_name: decoded.name,
+                        picture: decoded.picture
+                      };
+                      const user = await authService.googleLogin(profileData);
+                      handleSocialLogin('google', user);
+                    } catch (err) {
+                      console.error(err);
+                      setError('Failed to authenticate with backend');
+                    }
                   }}
                   onError={() => {
                     console.log('Login Failed');

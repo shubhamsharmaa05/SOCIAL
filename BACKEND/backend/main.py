@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import models
 from database import engine
 
-from routers import accounts, content, queue
+from routers import accounts, content, queue, auth
 
 # Create the database tables
 models.Base.metadata.create_all(bind=engine)
@@ -19,6 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth.router)
 app.include_router(accounts.router)
 app.include_router(content.router)
 app.include_router(queue.router)

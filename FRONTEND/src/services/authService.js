@@ -21,9 +21,8 @@ const authService = {
   },
 
   // Google Login User
-  googleLogin: async (token) => {
-    // Replace '/api/auth/google' with your actual google login endpoint
-    const response = await apiClient.post('/api/auth/google', { token });
+  googleLogin: async (profileData) => {
+    const response = await apiClient.post('/auth/google', profileData);
     return response.data;
   }
 };

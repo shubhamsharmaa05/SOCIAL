@@ -11,6 +11,7 @@ class User(Base):
     hashed_password = Column(String, nullable=True)
     google_id = Column(String, unique=True, index=True, nullable=True)
     full_name = Column(String, nullable=True)
+    picture = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
 
     accounts = relationship("Account", back_populates="owner")

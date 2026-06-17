@@ -55,10 +55,17 @@ class PublishingTask(PublishingTaskBase):
 class UserBase(BaseModel):
     email: Optional[str] = None
     full_name: Optional[str] = None
+    picture: Optional[str] = None
 
 class UserCreate(UserBase):
     password: Optional[str] = None
     google_id: Optional[str] = None
+
+class GoogleLogin(BaseModel):
+    email: str
+    google_id: str
+    full_name: str
+    picture: Optional[str] = None
 
 class UserLogin(BaseModel):
     email: str

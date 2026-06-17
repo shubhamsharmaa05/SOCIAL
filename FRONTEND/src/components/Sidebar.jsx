@@ -34,7 +34,7 @@ const navItems = [
 ];
 
 const Sidebar = () => {
-  const logout = useAuthStore((state) => state.logout);
+  const { logout, user } = useAuthStore();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -121,6 +121,19 @@ const Sidebar = () => {
       </Box>
 
       <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.05)" }} />
+      {user && (
+        <Box sx={{ p: 2, display: "flex", alignItems: "center", gap: 1.5, borderBottom: "1px solid rgba(255, 255, 255, 0.05)" }}>
+          <img src={user.picture || `https://ui-avatars.com/api/?name=${user.full_name}&background=random`} alt={user.full_name} className="w-10 h-10 rounded-full" />
+          <Box>
+            <Typography variant="body2" fontWeight="bold" color="text.primary">
+              {user.full_name}
+            </Typography>
+            <Typography variant="caption" color="text.secondary" sx={{ display: "block", maxWidth: 170, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {user.email}
+            </Typography>
+          </Box>
+        </Box>
+      )}
       <Box sx={{ p: 2 }}>
         <List disablePadding>
           <ListItem disablePadding sx={{ mb: 0.5 }}>
