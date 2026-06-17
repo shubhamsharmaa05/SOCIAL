@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Geist Variable', sans-serif;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    /* Base - Pure Black */
+    --background: oklch(0 0 0);
+    --foreground: oklch(0.985 0 0);
+    
+    /* Surfaces */
+    --card: oklch(0.12 0 0); /* slightly lighter than black */
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.12 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    
+    /* Primary (Dusty Pink) */
+    --primary: #E2AFB0;
+    --primary-foreground: #000000;
+    
+    /* Secondary (Dark Pink/Gray) */
+    --secondary: oklch(0.2 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    
+    /* Muted */
+    --muted: oklch(0.15 0 0);
+    --muted-foreground: oklch(0.7 0 0);
+    
+    /* Accents (Pink) */
+    --accent: #E2AFB040; /* 25% opacity for hover states */
+    --accent-foreground: #E2AFB0;
+    
+    /* Utility */
+    --destructive: #E2AFB0;
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: #E2AFB0;
+    
+    /* Charts */
+    --chart-1: #E2AFB0;
+    --chart-2: #D19A9B;
+    --chart-3: #C08586;
+    --chart-4: #AF7071;
+    --chart-5: #9E5B5C;
+    
+    --radius: 0.625rem;
+    
+    /* Sidebar */
+    --sidebar: oklch(0.1 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: #E2AFB0;
+    --sidebar-primary-foreground: #000000;
+    --sidebar-accent: #E2AFB040;
+    --sidebar-accent-foreground: #E2AFB0;
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: #E2AFB0;
+}
+
+.dark {
+    /* Already dark by default in :root */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    /* Force dark theme globally */
+    color-scheme: dark;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+/* Glassmorphism Utilities */
+@layer utilities {
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+  }
+  .glass-card {
+    @apply bg-[#0f0f11]/60 backdrop-blur-lg border border-white/5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300;
+  }
+  .glass-card:hover {
+    @apply border-primary/30 shadow-[0_8px_32px_rgba(226,175,176,0.15)];
+  }
+}
