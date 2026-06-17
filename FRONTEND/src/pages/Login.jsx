@@ -121,8 +121,8 @@ const Login = () => {
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {
                     console.log("Google Login Success:", credentialResponse);
-                    // Pass the credential to backend via authService
-                    // handleGoogleLogin(credentialResponse.credential);
+                    // For now, immediately redirect to dashboard
+                    handleSocialLogin('google');
                   }}
                   onError={() => {
                     console.log('Login Failed');
