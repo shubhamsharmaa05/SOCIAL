@@ -1,130 +1,151 @@
 import { Box, Typography, Button, Grid, Card, CardContent, Stack } from "@mui/material";
+import { motion } from "framer-motion";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import CallMadeIcon from "@mui/icons-material/CallMade";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100 } },
+};
+
 const Dashboard = () => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-      <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" }, alignItems: { md: "center" }, justifyContent: "space-between", gap: 2 }}>
-        <Box>
-          <Typography variant="h4" fontWeight="bold" color="text.primary" sx={{ letterSpacing: "-0.02em" }}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col gap-6"
+    >
+      <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
             Command Center
-          </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+          </h1>
+          <p className="text-gray-400 mt-1">
             Welcome back. Your AI is analyzing 42 new assets.
-          </Typography>
-        </Box>
+          </p>
+        </div>
         <Button
           variant="contained"
-          color="primary"
+          className="bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] rounded-xl py-2.5 px-5"
           startIcon={<AutoAwesomeIcon />}
-          sx={{
-            py: 1.25,
-            px: 2.5,
-            boxShadow: "0 0 15px rgba(99, 102, 241, 0.4)",
-            borderRadius: 2,
-          }}
         >
           Generate Plan
         </Button>
-      </Box>
+      </motion.div>
 
       <Grid container spacing={3}>
         {[
-          { label: "Total Reach", value: "2.4M", trend: "+14.5%", icon: TrendingUpIcon },
-          { label: "Assets in Vault", value: "1,248", trend: "+12", icon: CalendarTodayIcon },
-          { label: "AI Confidence Avg", value: "94%", trend: "+2%", icon: AutoAwesomeIcon },
+          { label: "Total Reach", value: "2.4M", trend: "+14.5%", icon: TrendingUpIcon, color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20" },
+          { label: "Assets in Vault", value: "1,248", trend: "+12", icon: CalendarTodayIcon, color: "text-purple-400", bg: "bg-purple-400/10", border: "border-purple-400/20" },
+          { label: "AI Confidence Avg", value: "94%", trend: "+2%", icon: AutoAwesomeIcon, color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/20" },
         ].map((stat, i) => (
           <Grid item xs={12} md={4} key={i}>
-            <Card sx={{ height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", p: 1 }}>
-              <CardContent>
-                <Box sx={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", mb: 2 }}>
-                  <Box sx={{ p: 1, bgcolor: "rgba(255,255,255,0.05)", borderRadius: 2, border: "1px solid rgba(255,255,255,0.1)" }}>
-                    <stat.icon sx={{ color: "primary.main", fontSize: 20 }} />
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", bgcolor: "success.main", color: "success.main", bgcolor: "rgba(16, 185, 129, 0.1)", px: 1.5, py: 0.5, borderRadius: 5 }}>
-                    <CallMadeIcon sx={{ fontSize: 14, mr: 0.5 }} />
-                    <Typography variant="caption" fontWeight="bold">
-                      {stat.trend}
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box>
-                  <Typography variant="h3" fontWeight="bold" color="text.primary" sx={{ mb: 0.5 }}>
-                    {stat.value}
-                  </Typography>
-                  <Typography variant="body2" fontWeight={500} color="text.secondary">
-                    {stat.label}
-                  </Typography>
-                </Box>
-              </CardContent>
-            </Card>
+            <motion.div variants={itemVariants} className="h-full">
+              <div className="h-full rounded-2xl border border-white/5 bg-white/5 p-5 backdrop-blur-xl transition-all hover:bg-white/10 hover:border-white/10 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`p-2.5 rounded-xl border ${stat.bg} ${stat.border}`}>
+                      <stat.icon className={`${stat.color}`} style={{ fontSize: 22 }} />
+                    </div>
+                    <div className="flex items-center bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20">
+                      <CallMadeIcon style={{ fontSize: 14, marginRight: 4 }} />
+                      <span className="text-xs font-bold">{stat.trend}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-white mb-1 tracking-tight">{stat.value}</h3>
+                    <p className="text-sm font-medium text-gray-400">{stat.label}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </Grid>
         ))}
       </Grid>
 
-      <Grid container spacing={3} sx={{ mt: 1 }}>
+      <Grid container spacing={3} className="mt-2">
         <Grid item xs={12} lg={6}>
-          <Card sx={{ p: 2 }}>
-            <Typography variant="h6" fontWeight="bold" color="text.primary" sx={{ mb: 2, display: "flex", alignItems: "center", gap: 1 }}>
-              <AutoAwesomeIcon sx={{ color: "primary.main", fontSize: 20 }} />
-              Top Recommendation
-            </Typography>
-            <Box sx={{ bgcolor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 2, p: 2, display: "flex", gap: 2 }}>
-              <Box sx={{ width: 96, height: 128, bgcolor: "grey.800", borderRadius: 1, border: "1px solid rgba(255,255,255,0.1)", overflow: "hidden", flexShrink: 0 }}>
-                <Box sx={{ width: "100%", height: "100%", background: "linear-gradient(to bottom right, #3f3f46, #18181b)" }} />
-              </Box>
-              <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", flex: 1 }}>
-                <Box>
-                  <Typography variant="caption" fontWeight="bold" color="primary.main" sx={{ textTransform: "uppercase", letterSpacing: 1, mb: 0.5, display: "block" }}>
-                    Instagram Reel
-                  </Typography>
-                  <Typography variant="body1" fontWeight={500} color="text.primary" sx={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                    "5 ways AI will change your daily routine in 2026"
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                    The AI analyzed your audience and suggests this reel has a 96% chance of outperforming your average reach today.
-                  </Typography>
-                </Box>
-                <Box sx={{ display: "flex", justifyContent: "flex-end", gap: 1, mt: 2 }}>
-                  <Button variant="outlined" size="small" sx={{ color: "text.primary", borderColor: "rgba(255,255,255,0.1)", "&:hover": { bgcolor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.2)" } }}>
-                    Edit
-                  </Button>
-                  <Button variant="contained" color="primary" size="small" sx={{ boxShadow: "0 0 10px rgba(99, 102, 241, 0.3)" }}>
-                    Approve
-                  </Button>
-                </Box>
-              </Box>
-            </Box>
-          </Card>
+          <motion.div variants={itemVariants} className="h-full">
+            <div className="rounded-2xl border border-white/5 bg-[#121212]/80 backdrop-blur-xl p-6 h-full flex flex-col">
+              <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                <AutoAwesomeIcon className="text-indigo-400" style={{ fontSize: 22 }} />
+                Top Recommendation
+              </h2>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4 flex gap-4 flex-1 transition-all hover:bg-white/10 group">
+                <div className="w-24 h-32 rounded-lg border border-white/10 overflow-hidden shrink-0 relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 mix-blend-overlay group-hover:scale-110 transition-transform duration-500" />
+                  <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900" />
+                </div>
+                <div className="flex flex-col justify-between flex-1">
+                  <div>
+                    <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-1 block">
+                      Instagram Reel
+                    </span>
+                    <h3 className="text-base font-semibold text-white line-clamp-2">
+                      "5 ways AI will change your daily routine in 2026"
+                    </h3>
+                    <p className="text-sm text-gray-400 mt-1.5 line-clamp-2">
+                      The AI analyzed your audience and suggests this reel has a 96% chance of outperforming your average reach today.
+                    </p>
+                  </div>
+                  <div className="flex justify-end gap-2 mt-3">
+                    <button className="px-4 py-1.5 text-sm font-medium text-white border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
+                      Edit
+                    </button>
+                    <button className="px-4 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-lg shadow-[0_0_15px_rgba(79,70,229,0.5)] hover:bg-indigo-500 transition-all">
+                      Approve
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </Grid>
 
         <Grid item xs={12} lg={6}>
-          <Card sx={{ p: 2 }}>
-            <Typography variant="h6" fontWeight="bold" color="text.primary" sx={{ mb: 2 }}>
-              Upcoming Schedule
-            </Typography>
-            <Stack spacing={1.5}>
-              {[1, 2, 3].map((i) => (
-                <Box key={i} sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 1.5, borderRadius: 2, border: "1px solid transparent", "&:hover": { bgcolor: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.1)" }, transition: "all 0.2s" }}>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                    <Box sx={{ width: 8, height: 8, borderRadius: "50%", bgcolor: "primary.main", boxShadow: "0 0 5px rgba(99, 102, 241, 0.8)" }} />
-                    <Typography variant="body2" color="text.primary">
-                      Product Launch Teaser
-                    </Typography>
-                  </Box>
-                  <Typography variant="caption" fontWeight={500} color="text.secondary">
-                    Today, 2:00 PM
-                  </Typography>
-                </Box>
-              ))}
-            </Stack>
-          </Card>
+          <motion.div variants={itemVariants} className="h-full">
+            <div className="rounded-2xl border border-white/5 bg-[#121212]/80 backdrop-blur-xl p-6 h-full flex flex-col">
+              <h2 className="text-lg font-bold text-white mb-4">
+                Upcoming Schedule
+              </h2>
+              <div className="flex flex-col gap-2.5 flex-1 justify-center">
+                {[
+                  { title: "Product Launch Teaser", time: "Today, 2:00 PM", color: "bg-indigo-500", shadow: "shadow-indigo-500/50" },
+                  { title: "Weekly Insights Carousel", time: "Tomorrow, 10:00 AM", color: "bg-purple-500", shadow: "shadow-purple-500/50" },
+                  { title: "Community Q&A Prompt", time: "Friday, 4:00 PM", color: "bg-emerald-500", shadow: "shadow-emerald-500/50" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center justify-between p-3.5 rounded-xl border border-transparent hover:bg-white/5 hover:border-white/10 transition-all group cursor-pointer">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-2.5 h-2.5 rounded-full ${item.color} shadow-[0_0_8px_var(--tw-shadow-color)] ${item.shadow} group-hover:scale-125 transition-transform`} />
+                      <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
+                        {item.title}
+                      </span>
+                    </div>
+                    <span className="text-xs font-medium text-gray-400">
+                      {item.time}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </Grid>
       </Grid>
-    </Box>
+    </motion.div>
   );
 };
 
