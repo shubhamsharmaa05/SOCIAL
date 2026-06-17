@@ -3,16 +3,7 @@ import { create } from 'zustand';
 export const useAuthStore = create((set) => ({
   isAuthenticated: localStorage.getItem('auth') === 'true',
   user: JSON.parse(localStorage.getItem('user')) || null,
-  login: (username, password) => {
-    if (username === 'admin' && password === 'admin') {
-      const user = { full_name: 'Admin', email: 'admin@example.com' };
-      localStorage.setItem('auth', 'true');
-      localStorage.setItem('user', JSON.stringify(user));
-      set({ isAuthenticated: true, user });
-      return true;
-    }
-    return false;
-  },
+
   socialLogin: (provider, userData = null) => {
     localStorage.setItem('auth', 'true');
     localStorage.setItem('provider', provider);

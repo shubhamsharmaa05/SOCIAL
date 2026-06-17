@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 import { useAuthStore } from '../store/authStore';
-import { Sparkles, ArrowRight, AlertCircle, ChevronLeft } from 'lucide-react';
+import { Sparkles, AlertCircle, ChevronLeft } from 'lucide-react';
 import { jwtDecode } from 'jwt-decode';
 import authService from '../services/authService';
 
@@ -18,27 +18,16 @@ const GoogleIcon = () => (
 
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login, socialLogin } = useAuthStore();
+  const { socialLogin } = useAuthStore();
 
   const handleSocialLogin = (provider, userData = null) => {
     socialLogin(provider, userData);
     navigate('/dashboard');
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    
-    if (login(username, password)) {
-      navigate('/dashboard');
-    } else {
-      setError('Invalid username or password');
-    }
-  };
+
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 selection:bg-primary/30 relative">
@@ -72,43 +61,7 @@ const Login = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Username</label>
-              <input 
-                type="text" 
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                placeholder="admin"
-                className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white outline-none focus:border-primary transition-colors"
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Password</label>
-              <input 
-                type="password" 
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full bg-black/50 border border-white/10 rounded-lg p-3 text-white outline-none focus:border-primary transition-colors"
-                required
-              />
-            </div>
-            
-            <button 
-              type="submit" 
-              className="w-full bg-primary hover:bg-primary/90 text-black font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 mt-4 shadow-[0_0_15px_rgba(226,175,176,0.3)]"
-            >
-              Sign In <ArrowRight className="w-4 h-4" />
-            </button>
-          </form>
 
-          <div className="flex items-center gap-4 my-8">
-            <div className="flex-1 border-t border-white/10"></div>
-            <span className="text-xs uppercase text-zinc-500 font-medium tracking-wider">Or continue with</span>
-            <div className="flex-1 border-t border-white/10"></div>
-          </div>
 
           <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all flex justify-center">
             <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
@@ -141,12 +94,9 @@ const Login = () => {
             </GoogleOAuthProvider>
           </div>
           
-          <div className="mt-6 text-center text-sm text-zinc-400 space-y-2">
+          <div className="mt-8 text-center text-sm text-zinc-400 space-y-2">
             <p>
               Don't have an account? <Link to="/register" className="text-primary hover:underline font-medium">Register</Link>
-            </p>
-            <p className="text-xs text-zinc-500">
-              Hint: Use <strong>admin</strong> / <strong>admin</strong> to login
             </p>
           </div>
         </div>
