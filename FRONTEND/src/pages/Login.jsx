@@ -16,13 +16,6 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-pink-500">
-    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-  </svg>
-);
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -117,45 +110,35 @@ const Login = () => {
             <div className="flex-1 border-t border-white/10"></div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all">
-              <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
-                <GoogleLogin
-                  onSuccess={async (credentialResponse) => {
-                    console.log("Google Login Success:", credentialResponse);
-                    try {
-                      const decoded = jwtDecode(credentialResponse.credential);
-                      const profileData = {
-                        email: decoded.email,
-                        google_id: decoded.sub,
-                        full_name: decoded.name,
-                        picture: decoded.picture
-                      };
-                      const user = await authService.googleLogin(profileData);
-                      handleSocialLogin('google', user);
-                    } catch (err) {
-                      console.error(err);
-                      setError('Failed to authenticate with backend');
-                    }
-                  }}
-                  onError={() => {
-                    console.log('Login Failed');
-                    setError('Google Login Failed');
-                  }}
-                  theme="filled_black"
-                  shape="rectangular"
-                  width="100%"
-                />
-              </GoogleOAuthProvider>
-            </div>
-            <button
-              type="button"
-              onClick={() => handleSocialLogin('instagram')}
-              className="flex items-center justify-center gap-2 w-full bg-black/40 hover:bg-black/60 border border-white/10 hover:border-white/20 rounded-xl py-3 px-4 transition-all text-sm font-medium text-white shadow-sm h-[46px]"
-            >
-              <InstagramIcon />
-              Instagram
-            </button>
+          <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all flex justify-center">
+            <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  console.log("Google Login Success:", credentialResponse);
+                  try {
+                    const decoded = jwtDecode(credentialResponse.credential);
+                    const profileData = {
+                      email: decoded.email,
+                      google_id: decoded.sub,
+                      full_name: decoded.name,
+                      picture: decoded.picture
+                    };
+                    const user = await authService.googleLogin(profileData);
+                    handleSocialLogin('google', user);
+                  } catch (err) {
+                    console.error(err);
+                    setError('Failed to authenticate with backend');
+                  }
+                }}
+                onError={() => {
+                  console.log('Login Failed');
+                  setError('Google Login Failed');
+                }}
+                theme="filled_black"
+                shape="rectangular"
+                width="100%"
+              />
+            </GoogleOAuthProvider>
           </div>
           
           <div className="mt-6 text-center text-sm text-zinc-400 space-y-2">

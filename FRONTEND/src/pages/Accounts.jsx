@@ -1,14 +1,29 @@
-import { Share2, Check, Plus } from "lucide-react";
+import { Share2, Check, Plus, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const Accounts = () => {
-  const platforms = [
-    { name: "Instagram", connected: true, account: "@acmecorp" },
-    { name: "LinkedIn", connected: true, account: "Acme Corporation" },
-    { name: "X (Twitter)", connected: true, account: "@acme_hq" },
-    { name: "TikTok", connected: false, account: null },
-    { name: "YouTube", connected: false, account: null },
-    { name: "Facebook", connected: false, account: null },
-  ];
+  const [platforms, setPlatforms] = useState([
+    { id: 'instagram', name: "Instagram", connected: false, account: null },
+    { id: 'linkedin', name: "LinkedIn", connected: true, account: "Acme Corporation" },
+    { id: 'twitter', name: "X (Twitter)", connected: true, account: "@acme_hq" },
+    { id: 'tiktok', name: "TikTok", connected: false, account: null },
+    { id: 'youtube', name: "YouTube", connected: false, account: null },
+    { id: 'facebook', name: "Facebook", connected: false, account: null },
+  ]);
+  const [connectingId, setConnectingId] = useState(null);
+
+  const handleConnect = (platformId) => {
+    if (platformId === 'instagram') {
+      setConnectingId(platformId);
+      // Simulate Instagram access request OAuth flow
+      setTimeout(() => {
+        setPlatforms(prev => prev.map(p => 
+          p.id === platformId ? { ...p, connected: true, account: "@my_insta_page" } : p
+        ));
+        setConnectingId(null);
+      }, 2000);
+    }
+  };
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
@@ -40,12 +55,21 @@ const Accounts = () => {
               {platform.connected ? `Posting as ${platform.account}` : "Connect your account to enable auto-publishing."}
             </p>
             
-            <button className={`w-full py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
+            <button 
+              onClick={() => !platform.connected && handleConnect(platform.id)}
+              disabled={connectingId === platform.id}
+              className={`w-full py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
               platform.connected 
                 ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10' 
-                : 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_10px_rgba(226,175,176,0.2)]'
+                : 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_10px_rgba(226,175,176,0.2)] disabled:opacity-70 disabled:cursor-not-allowed'
             }`}>
-              {platform.connected ? 'Manage Connection' : <><Plus className="w-4 h-4" /> Connect Account</>}
+              {connectingId === platform.id ? (
+                <><Loader2 className="w-4 h-4 animate-spin" /> Requesting Access...</>
+              ) : platform.connected ? (
+                'Manage Connection'
+              ) : (
+                <><Plus className="w-4 h-4" /> Connect Account</>
+              )}
             </button>
           </div>
         ))}
