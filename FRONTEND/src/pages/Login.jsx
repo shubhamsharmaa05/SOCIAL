@@ -117,7 +117,7 @@ const Login = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all">
-              <GoogleOAuthProvider clientId="<YOUR_GOOGLE_CLIENT_ID>">
+              <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {
                     console.log("Google Login Success:", credentialResponse);
