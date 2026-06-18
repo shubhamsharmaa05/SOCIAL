@@ -5,7 +5,7 @@ const Settings = () => {
     <div className="space-y-6 max-w-4xl mx-auto">
       <div>
         <h1 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-          <SettingsIcon className="text-primary w-8 h-8" />
+          <SettingsIcon className="text-[#F50057] w-8 h-8" />
           Settings
         </h1>
         <p className="text-zinc-400 mt-1">Configure your workspace and AI preferences.</p>
@@ -14,7 +14,7 @@ const Settings = () => {
       <div className="flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-64 space-y-2">
           {['General', 'Brand Voice', 'Autonomous Mode', 'Notifications', 'Billing'].map((tab, i) => (
-            <button key={i} className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${i === 2 ? 'bg-primary/10 text-primary border border-primary/20' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}>
+            <button key={i} className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${i === 2 ? 'bg-primary/10 text-[#F50057] border border-primary/20' : 'text-zinc-400 hover:text-white hover:bg-white/5'}`}>
               {tab}
             </button>
           ))}
@@ -24,7 +24,7 @@ const Settings = () => {
           <div className="mb-6 pb-6 border-b border-white/10 flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                <Zap className="w-5 h-5 text-primary" /> Autonomous Mode
+                <Zap className="w-5 h-5 text-[#F50057]" /> Autonomous Mode
               </h2>
               <p className="text-sm text-zinc-400 mt-1">Allow AI to schedule and publish automatically without approval.</p>
             </div>
@@ -56,7 +56,7 @@ const Settings = () => {
             
             <div className="mt-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
               <div className="flex gap-3">
-                <Shield className="w-5 h-5 text-primary shrink-0" />
+                <Shield className="w-5 h-5 text-[#F50057] shrink-0" />
                 <p className="text-sm text-zinc-300 leading-relaxed">
                   <strong className="text-white">Safety Warning:</strong> Enabling Autonomous Mode gives the AI full control over publishing. Ensure your Brand Voice guidelines are accurately configured before enabling.
                 </p>

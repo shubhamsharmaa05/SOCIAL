@@ -16,7 +16,7 @@ const Analytics = () => {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-          <BarChart3 className="text-primary w-8 h-8" />
+          <BarChart3 className="text-[#F50057] w-8 h-8" />
           Analytics Dashboard
         </h1>
         <p className="text-zinc-400 mt-1">AI-powered insights into your content performance.</p>
@@ -34,8 +34,8 @@ const Analytics = () => {
           <span className="text-emerald-400 text-sm flex items-center mt-2"><TrendingUp className="w-4 h-4 mr-1" /> +0.4% this week</span>
         </div>
         <div className="glass-card p-6 border border-primary/30 relative overflow-hidden">
-          <div className="absolute -right-4 -top-4 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
-          <h3 className="text-sm font-medium text-primary mb-2 flex items-center"><Users className="w-4 h-4 mr-1" /> AI Insight</h3>
+          <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#121212] rounded-full blur-xl"></div>
+          <h3 className="text-sm font-medium text-[#F50057] mb-2 flex items-center"><Users className="w-4 h-4 mr-1" /> AI Insight</h3>
           <p className="text-sm text-zinc-300">Your audience is most active on <strong className="text-white">Tuesdays at 2 PM</strong>. Posting videos during this window increases reach by 34%.</p>
         </div>
       </div>

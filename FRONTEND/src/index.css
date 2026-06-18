@@ -50,55 +50,55 @@
 
 :root {
     /* Base - Pure Black */
-    --background: oklch(0 0 0);
-    --foreground: oklch(0.985 0 0);
+    --background: #000000;
+    --foreground: #FAFAFA;
     
     /* Surfaces */
-    --card: oklch(0.12 0 0); /* slightly lighter than black */
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.12 0 0);
-    --popover-foreground: oklch(0.985 0 0);
+    --card: #121212; /* Deep dark gray */
+    --card-foreground: #FAFAFA;
+    --popover: #121212;
+    --popover-foreground: #FAFAFA;
     
-    /* Primary (Dusty Pink) */
-    --primary: #FF6B6B;
-    --primary-foreground: #000000;
+    /* Primary */
+    --primary: #F50057; /* Fallback vibrant pink, but we use gradient heavily */
+    --primary-foreground: #FFFFFF;
     
-    /* Secondary (Dark Pink/Gray) */
-    --secondary: oklch(0.2 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
+    /* Secondary */
+    --secondary: #262626;
+    --secondary-foreground: #FAFAFA;
     
     /* Muted */
-    --muted: oklch(0.15 0 0);
-    --muted-foreground: oklch(0.7 0 0);
+    --muted: #262626;
+    --muted-foreground: #A8A8A8;
     
-    /* Accents (Pink) */
-    --accent: #FF6B6B40; /* 25% opacity for hover states */
-    --accent-foreground: #FF6B6B;
+    /* Accents */
+    --accent: #262626; 
+    --accent-foreground: #FAFAFA;
     
     /* Utility */
-    --destructive: #FF6B6B;
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: #FF6B6B;
+    --destructive: #ED4956; /* Insta red */
+    --border: #363636; /* Classic Instagram separator */
+    --input: #262626;
+    --ring: #F50057;
     
     /* Charts */
-    --chart-1: #FF6B6B;
-    --chart-2: #FF4D4D;
-    --chart-3: #FF3333;
-    --chart-4: #FF1A1A;
-    --chart-5: #E60000;
+    --chart-1: #F50057;
+    --chart-2: #8A3AB9;
+    --chart-3: #E95950;
+    --chart-4: #FCAF45;
+    --chart-5: #FFDC80;
     
-    --radius: 0.625rem;
+    --radius: 0.5rem;
     
     /* Sidebar */
-    --sidebar: oklch(0.1 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: #FF6B6B;
-    --sidebar-primary-foreground: #000000;
-    --sidebar-accent: #FF6B6B40;
-    --sidebar-accent-foreground: #FF6B6B;
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: #FF6B6B;
+    --sidebar: #000000;
+    --sidebar-foreground: #FAFAFA;
+    --sidebar-primary: #F50057;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #121212;
+    --sidebar-accent-foreground: #FAFAFA;
+    --sidebar-border: #363636;
+    --sidebar-ring: #F50057;
 }
 
 .dark {
@@ -119,15 +119,39 @@
     }
 }
 
-/* Glassmorphism Utilities */
 @layer utilities {
+  .insta-gradient {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+  .insta-gradient-text {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .insta-ring {
+    position: relative;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .insta-ring::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
   .glass-panel {
-    @apply bg-black/40 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)];
+    @apply bg-[#121212] border border-[#363636];
   }
   .glass-card {
-    @apply bg-[#0f0f11]/60 backdrop-blur-lg border border-white/5 rounded-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-300;
+    @apply bg-[#121212] border border-[#363636] rounded-xl transition-all duration-300;
   }
   .glass-card:hover {
-    @apply border-primary/30 shadow-[0_8px_32px_rgba(255,107,107,0.15)];
+    @apply border-[#A8A8A8];
   }
 }

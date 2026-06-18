@@ -87,7 +87,7 @@ const Profile = () => {
         {/* Left Column: Avatar & Basic Info */}
         <div className="glass-panel p-6 rounded-xl flex flex-col items-center text-center space-y-4">
           <div className="relative group cursor-pointer">
-            <div className="w-32 h-32 rounded-full bg-zinc-800 border-2 border-primary/50 overflow-hidden flex items-center justify-center relative shadow-[0_0_20px_rgba(255,107,107,0.2)]">
+            <div className="w-32 h-32 rounded-full bg-zinc-800 border-2 border-black overflow-hidden flex items-center justify-center relative ">
                {profilePicture ? (
                  <img src={profilePicture} alt="Profile" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                ) : (
@@ -101,7 +101,7 @@ const Profile = () => {
           </div>
           <div>
             <h2 className="text-xl font-bold text-white">{fullName}</h2>
-            <p className="text-sm text-primary font-medium mt-1">Pro Creator</p>
+            <p className="text-sm text-[#F50057] font-medium mt-1">Pro Creator</p>
           </div>
           <p className="text-sm text-zinc-400 px-4">
             Digital marketer and content creator building brands in the tech space.
@@ -112,7 +112,7 @@ const Profile = () => {
         <div className="md:col-span-2 space-y-6">
           <div className="glass-panel p-6 rounded-xl space-y-6">
             <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-white/10 pb-4">
-              <User className="w-5 h-5 text-primary" /> Personal Details
+              <User className="w-5 h-5 text-[#F50057]" /> Personal Details
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
@@ -139,7 +139,7 @@ const Profile = () => {
 
           <div className="glass-panel p-6 rounded-xl space-y-6">
             <h3 className="text-lg font-bold text-white flex items-center gap-2 border-b border-white/10 pb-4">
-              <Shield className="w-5 h-5 text-primary" /> Security
+              <Shield className="w-5 h-5 text-[#F50057]" /> Security
             </h3>
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-black/50 border border-white/5 rounded-lg">
@@ -150,7 +150,7 @@ const Profile = () => {
                     <p className="text-xs text-zinc-500 mt-0.5">Last changed 3 months ago</p>
                   </div>
                 </div>
-                <button onClick={() => setShowPasswordModal(true)} className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Update</button>
+                <button onClick={() => setShowPasswordModal(true)} className="text-sm font-medium text-[#F50057] hover:text-[#F50057]/80 transition-colors">Update</button>
               </div>
               
               <div className="flex items-center justify-between p-4 bg-black/50 border border-white/5 rounded-lg">
@@ -161,7 +161,7 @@ const Profile = () => {
                     <p className="text-xs text-zinc-500 mt-0.5">Add an extra layer of security</p>
                   </div>
                 </div>
-                <button onClick={handleGenerate2FA} className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Enable</button>
+                <button onClick={handleGenerate2FA} className="text-sm font-medium text-[#F50057] hover:text-[#F50057]/80 transition-colors">Enable</button>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ const Profile = () => {
                 <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">New Password</label>
                 <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" placeholder="Enter new password" />
               </div>
-              <button onClick={handleUpdatePassword} className="w-full bg-primary hover:bg-primary/80 text-black font-bold py-2.5 rounded-lg transition-colors mt-2">
+              <button onClick={handleUpdatePassword} className="w-full insta-gradient text-white hover:opacity-90 font-bold py-2.5 rounded-lg transition-colors mt-2">
                 Save Password
               </button>
             </div>
@@ -209,7 +209,7 @@ const Profile = () => {
             )}
             <div className="space-y-4">
               <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white text-center tracking-[0.5em] outline-none focus:border-primary transition-colors" placeholder="000000" maxLength="6" />
-              <button onClick={handleVerify2FA} className="w-full bg-primary hover:bg-primary/80 text-black font-bold py-2.5 rounded-lg transition-colors mt-2">
+              <button onClick={handleVerify2FA} className="w-full insta-gradient text-white hover:opacity-90 font-bold py-2.5 rounded-lg transition-colors mt-2">
                 Verify & Enable
               </button>
             </div>

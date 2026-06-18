@@ -29,7 +29,7 @@ const Accounts = () => {
     <div className="space-y-6 max-w-5xl mx-auto">
       <div>
         <h1 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-          <Share2 className="text-primary w-8 h-8" />
+          <Share2 className="text-[#F50057] w-8 h-8" />
           Connected Accounts
         </h1>
         <p className="text-zinc-400 mt-1">Manage all your social media connections in one place. Support for multiple emails.</p>
@@ -61,7 +61,7 @@ const Accounts = () => {
               className={`w-full py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
               platform.connected 
                 ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10' 
-                : 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_10px_rgba(255,107,107,0.2)] disabled:opacity-70 disabled:cursor-not-allowed'
+                : 'insta-gradient text-white hover:opacity-90  disabled:opacity-70 disabled:cursor-not-allowed'
             }`}>
               {connectingId === platform.id ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Requesting Access...</>

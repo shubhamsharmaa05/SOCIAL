@@ -14,11 +14,11 @@ const Landing = () => {
       {/* Navbar */}
       <nav className="h-20 flex items-center justify-between px-8 max-w-7xl mx-auto z-10 relative">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(255,107,107,0.3)]">
-            <Sparkles className="w-4 h-4 text-primary" />
+          <div className="w-8 h-8 rounded-lg bg-[#121212] flex items-center justify-center border border-[#363636] ">
+            <Sparkles className="w-4 h-4 text-[#F50057]" />
           </div>
           <span className="font-bold text-xl tracking-tight text-white drop-shadow-md">
-            So<span className="text-primary">cial</span>
+            So<span className="text-[#F50057]">cial</span>
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
@@ -30,14 +30,14 @@ const Landing = () => {
           {isAuthenticated ? (
             <>
               <button onClick={logout} className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">Log out</button>
-              <Link to="/dashboard" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+              <Link to="/dashboard" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
                 Dashboard
               </Link>
             </>
           ) : (
             <>
               <Link to="/login" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">Log in</Link>
-              <Link to="/register" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all shadow-[0_0_15px_rgba(0,0,0,0.5)]">
+              <Link to="/register" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
                 Get Started
               </Link>
             </>
@@ -47,7 +47,7 @@ const Landing = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 text-center max-w-5xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-primary mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-[#F50057] mb-8">
           <Sparkles className="w-3 h-3" />
           <span>The next generation of Social Media Management</span>
         </div>
@@ -59,7 +59,7 @@ const Landing = () => {
           Stop scheduling. Start growing. Let AI analyze, categorize, and autonomously publish your best content at the perfect time.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="/dashboard" className="bg-primary hover:bg-primary/90 text-black px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-[0_0_20px_rgba(255,107,107,0.4)] flex items-center gap-2 w-full sm:w-auto justify-center">
+          <Link to="/dashboard" className="insta-gradient text-white hover:opacity-90 px-8 py-4 rounded-xl font-bold text-lg transition-colors  flex items-center gap-2 w-full sm:w-auto justify-center">
             Enter Dashboard <ArrowRight className="w-5 h-5" />
           </Link>
           <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all w-full sm:w-auto">
@@ -68,7 +68,7 @@ const Landing = () => {
         </div>
         
         {/* Mock UI Preview */}
-        <div className="mt-20 glass-panel p-2 md:p-4 rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] mx-auto relative overflow-hidden">
+        <div className="mt-20 glass-panel p-2 md:p-4 rounded-2xl border border-white/10  mx-auto relative overflow-hidden">
            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
            <div className="bg-[#050505] rounded-xl border border-white/5 h-96 flex items-center justify-center relative overflow-hidden">
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
@@ -91,7 +91,7 @@ const Landing = () => {
           ].map((feature, i) => (
             <div key={i} className="glass-card p-8 group">
               <div className="w-12 h-12 bg-primary/10 rounded-xl border border-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <feature.icon className="w-6 h-6 text-primary" />
+                <feature.icon className="w-6 h-6 text-[#F50057]" />
               </div>
               <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
               <p className="text-zinc-400 leading-relaxed">{feature.desc}</p>

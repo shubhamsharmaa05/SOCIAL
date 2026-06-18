@@ -5,7 +5,7 @@ const Recommendations = () => {
     <div className="space-y-6 max-w-5xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
-          <Sparkles className="text-primary w-8 h-8" />
+          <Sparkles className="text-[#F50057] w-8 h-8" />
           AI Recommendations
         </h1>
         <p className="text-zinc-400 mt-2">The engine has analyzed your audience and vault. Here are the top picks for today.</p>
@@ -29,7 +29,7 @@ const Recommendations = () => {
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xs font-bold px-2 py-1 bg-white/10 rounded text-zinc-300">{item.platform}</span>
                   <span className="text-xs font-bold px-2 py-1 bg-white/10 rounded text-zinc-300">{item.type}</span>
-                  <span className="text-sm font-bold text-primary flex items-center gap-1">
+                  <span className="text-sm font-bold text-[#F50057] flex items-center gap-1">
                     {item.score}% Match
                   </span>
                 </div>
@@ -41,7 +41,7 @@ const Recommendations = () => {
                 </div>
 
                 <div className="flex gap-3 mt-4">
-                  <button className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-[0_0_10px_rgba(255,107,107,0.2)]">
+                  <button className="flex-1 flex items-center justify-center gap-2 insta-gradient text-white hover:opacity-90 px-4 py-2 rounded-lg font-medium transition-colors ">
                     <CheckCircle2 className="w-4 h-4" /> Approve & Schedule
                   </button>
                   <button className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white px-4 py-2 rounded-lg font-medium transition-colors border border-white/10">

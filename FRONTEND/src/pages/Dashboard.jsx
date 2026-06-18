@@ -39,7 +39,7 @@ const Dashboard = () => {
         </div>
         <Button
           variant="contained"
-          className="bg-indigo-600 hover:bg-indigo-500 text-white shadow-[0_0_20px_rgba(79,70,229,0.4)] transition-all hover:shadow-[0_0_30px_rgba(79,70,229,0.6)] rounded-xl py-2.5 px-5"
+          className="bg-indigo-600 hover:bg-indigo-500 text-white  transition-all hover: rounded-xl py-2.5 px-5"
           startIcon={<AutoAwesomeIcon />}
         >
           Generate Plan
@@ -106,7 +106,7 @@ const Dashboard = () => {
                     <button className="px-4 py-1.5 text-sm font-medium text-white border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
                       Edit
                     </button>
-                    <button className="px-4 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-lg shadow-[0_0_15px_rgba(79,70,229,0.5)] hover:bg-indigo-500 transition-all">
+                    <button className="px-4 py-1.5 text-sm font-medium text-white bg-indigo-600 rounded-lg  hover:bg-indigo-500 transition-all">
                       Approve
                     </button>
                   </div>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between p-3.5 rounded-xl border border-transparent hover:bg-white/5 hover:border-white/10 transition-all group cursor-pointer">
                     <div className="flex items-center gap-3">
-                      <div className={`w-2.5 h-2.5 rounded-full ${item.color} shadow-[0_0_8px_var(--tw-shadow-color)] ${item.shadow} group-hover:scale-125 transition-transform`} />
+                      <div className={`w-2.5 h-2.5 rounded-full ${item.color}  ${item.shadow} group-hover:scale-125 transition-transform`} />
                       <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
                         {item.title}
                       </span>

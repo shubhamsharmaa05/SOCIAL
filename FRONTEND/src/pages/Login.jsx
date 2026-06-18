@@ -42,15 +42,15 @@ const Login = () => {
       
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(255,107,107,0.3)]">
-            <Sparkles className="w-5 h-5 text-primary" />
+          <div className="w-10 h-10 rounded-xl bg-[#121212] flex items-center justify-center border border-[#363636] ">
+            <Sparkles className="w-5 h-5 text-[#F50057]" />
           </div>
           <span className="font-bold text-2xl tracking-tight text-white drop-shadow-md">
-            So<span className="text-primary">cial</span>
+            So<span className="text-[#F50057]">cial</span>
           </span>
         </div>
 
-        <div className="glass-panel p-8 rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div className="glass-panel p-8 rounded-2xl border border-white/10 ">
           <h2 className="text-2xl font-bold mb-2">Welcome Back</h2>
           <p className="text-zinc-400 mb-8 text-sm">Sign in to access your command center.</p>
           
@@ -99,7 +99,7 @@ const Login = () => {
           
           <div className="mt-8 text-center text-sm text-zinc-400 space-y-2">
             <p>
-              Don't have an account? <Link to="/register" className="text-primary hover:underline font-medium">Register</Link>
+              Don't have an account? <Link to="/register" className="text-[#F50057] hover:underline font-medium">Register</Link>
             </p>
           </div>
         </div>
