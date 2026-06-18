@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from fastapi import APIRouter, Depends
 from typing import List
-
-import models, schemas
+import schemas
 from database import get_db
 
 router = APIRouter(
@@ -11,14 +9,14 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=List[schemas.PublishingTask])
-def read_queue(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    tasks = db.query(models.PublishingTask).offset(skip).limit(limit).all()
+async def read_queue(skip: int = 0, limit: int = 100, db = Depends(get_db)):
+    cursor = db.publishing_tasks.find().skip(skip).limit(limit)
+    tasks = await cursor.to_list(length=limit)
     return tasks
 
 @router.post("/", response_model=schemas.PublishingTask)
-def create_task(task: schemas.PublishingTaskCreate, db: Session = Depends(get_db)):
-    db_task = models.PublishingTask(**task.model_dump())
-    db.add(db_task)
-    db.commit()
-    db.refresh(db_task)
-    return db_task
+async def create_task(task: schemas.PublishingTaskCreate, db = Depends(get_db)):
+    task_dict = task.model_dump()
+    result = await db.publishing_tasks.insert_one(task_dict)
+    task_dict["_id"] = result.inserted_id
+    return task_dict

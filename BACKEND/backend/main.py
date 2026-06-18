@@ -2,13 +2,8 @@
 from fastapi import FastAPI
 # pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
-import models
-from database import engine
 
 from routers import accounts, content, queue, auth
-
-# Create the database tables
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Social Media Dashboard API")
 

@@ -1,30 +1,15 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
 import os
+from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 
 load_dotenv()
 
-SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL")
+MONGODB_URI = os.environ.get("DATABASE_URL", "mongodb://localhost:27017")
 
-if SQLALCHEMY_DATABASE_URL and not SQLALCHEMY_DATABASE_URL.startswith("mongodb"):
-    if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
-        SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
-    engine = create_engine(SQLALCHEMY_DATABASE_URL)
-else:
-    SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-    engine = create_engine(
-        SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-    )
+# If the user put a sql URL in MONGODB_URI accidentally, we'll try to use a fallback or let it fail, but we assume it's a mongo URL now.
+client = AsyncIOMotorClient(MONGODB_URI)
+db = client["social_db"]
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+async def get_db():
+    yield db
 
-Base = declarative_base()
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
