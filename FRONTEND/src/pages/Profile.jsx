@@ -1,6 +1,81 @@
-import { User, Mail, Shield, Key, Camera } from "lucide-react";
+import { useState } from "react";
+import { User, Mail, Shield, Key, Camera, X } from "lucide-react";
+import { useAuthStore } from "../store/authStore";
 
 const Profile = () => {
+  const { user } = useAuthStore();
+  
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [show2FAModal, setShow2FAModal] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [qrCodeUrl, setQrCodeUrl] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+
+  const firstName = user?.given_name || user?.name?.split(' ')[0] || "Guest";
+  const lastName = user?.family_name || user?.name?.split(' ').slice(1).join(' ') || "";
+  const email = user?.email || "";
+  const fullName = user?.name || `${firstName} ${lastName}`.trim();
+  const profilePicture = user?.picture || null;
+
+  const handleUpdatePassword = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/auth/update-password", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, old_password: oldPassword, new_password: newPassword })
+      });
+      if (response.ok) {
+        alert("Password updated successfully");
+        setShowPasswordModal(false);
+      } else {
+        const data = await response.json();
+        alert(data.detail || "Failed to update password");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error updating password");
+    }
+  };
+
+  const handleGenerate2FA = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/auth/2fa/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setQrCodeUrl(data.qr_code);
+        setShow2FAModal(true);
+      } else {
+        alert("Failed to generate 2FA");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleVerify2FA = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/auth/2fa/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code: verificationCode })
+      });
+      if (response.ok) {
+        alert("2FA verified and enabled successfully!");
+        setShow2FAModal(false);
+      } else {
+        const data = await response.json();
+        alert(data.detail || "Invalid 2FA code");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       <div>
@@ -13,7 +88,11 @@ const Profile = () => {
         <div className="glass-panel p-6 rounded-xl flex flex-col items-center text-center space-y-4">
           <div className="relative group cursor-pointer">
             <div className="w-32 h-32 rounded-full bg-zinc-800 border-2 border-primary/50 overflow-hidden flex items-center justify-center relative shadow-[0_0_20px_rgba(226,175,176,0.2)]">
-               <User className="w-12 h-12 text-zinc-500" />
+               {profilePicture ? (
+                 <img src={profilePicture} alt="Profile" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+               ) : (
+                 <User className="w-12 h-12 text-zinc-500" />
+               )}
                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                  <Camera className="w-6 h-6 text-white mb-1" />
                  <span className="text-xs font-medium text-white">Change</span>
@@ -21,7 +100,7 @@ const Profile = () => {
             </div>
           </div>
           <div>
-            <h2 className="text-xl font-bold text-white">Alex Mercer</h2>
+            <h2 className="text-xl font-bold text-white">{fullName}</h2>
             <p className="text-sm text-primary font-medium mt-1">Pro Creator</p>
           </div>
           <p className="text-sm text-zinc-400 px-4">
@@ -38,17 +117,17 @@ const Profile = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">First Name</label>
-                <input type="text" defaultValue="Alex" className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" />
+                <input type="text" defaultValue={firstName} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" />
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Last Name</label>
-                <input type="text" defaultValue="Mercer" className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" />
+                <input type="text" defaultValue={lastName} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" />
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider flex items-center gap-2">
                   <Mail className="w-3 h-3" /> Email Address
                 </label>
-                <input type="email" defaultValue="alex@acmecorp.com" className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" />
+                <input type="email" defaultValue={email} readOnly className="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-white/70 outline-none cursor-not-allowed" />
               </div>
             </div>
             <div className="flex justify-end pt-2">
@@ -71,7 +150,7 @@ const Profile = () => {
                     <p className="text-xs text-zinc-500 mt-0.5">Last changed 3 months ago</p>
                   </div>
                 </div>
-                <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Update</button>
+                <button onClick={() => setShowPasswordModal(true)} className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Update</button>
               </div>
               
               <div className="flex items-center justify-between p-4 bg-black/50 border border-white/5 rounded-lg">
@@ -82,12 +161,61 @@ const Profile = () => {
                     <p className="text-xs text-zinc-500 mt-0.5">Add an extra layer of security</p>
                   </div>
                 </div>
-                <button className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Enable</button>
+                <button onClick={handleGenerate2FA} className="text-sm font-medium text-primary hover:text-primary/80 transition-colors">Enable</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Password Modal */}
+      {showPasswordModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="bg-zinc-900 border border-white/10 p-6 rounded-xl w-full max-w-md shadow-2xl relative">
+            <button onClick={() => setShowPasswordModal(false)} className="absolute top-4 right-4 text-zinc-400 hover:text-white">
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-xl font-bold text-white mb-4">Update Password</h3>
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Old Password</label>
+                <input type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" placeholder="Leave empty if setting for the first time" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-zinc-400 uppercase tracking-wider">New Password</label>
+                <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white outline-none focus:border-primary transition-colors" placeholder="Enter new password" />
+              </div>
+              <button onClick={handleUpdatePassword} className="w-full bg-primary hover:bg-primary/80 text-black font-bold py-2.5 rounded-lg transition-colors mt-2">
+                Save Password
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 2FA Modal */}
+      {show2FAModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="bg-zinc-900 border border-white/10 p-6 rounded-xl w-full max-w-md shadow-2xl relative text-center">
+            <button onClick={() => setShow2FAModal(false)} className="absolute top-4 right-4 text-zinc-400 hover:text-white">
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-xl font-bold text-white mb-2">Enable 2FA</h3>
+            <p className="text-sm text-zinc-400 mb-6">Scan this QR code with Google Authenticator or Authy to set up two-factor authentication.</p>
+            {qrCodeUrl && (
+              <div className="flex justify-center mb-6">
+                <img src={qrCodeUrl} alt="QR Code" className="w-48 h-48 rounded-lg bg-white p-2" />
+              </div>
+            )}
+            <div className="space-y-4">
+              <input type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} className="w-full bg-black border border-white/10 rounded-lg p-2.5 text-white text-center tracking-[0.5em] outline-none focus:border-primary transition-colors" placeholder="000000" maxLength="6" />
+              <button onClick={handleVerify2FA} className="w-full bg-primary hover:bg-primary/80 text-black font-bold py-2.5 rounded-lg transition-colors mt-2">
+                Verify & Enable
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -13,6 +13,8 @@ class User(Base):
     full_name = Column(String, nullable=True)
     picture = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
+    totp_secret = Column(String, nullable=True)
+    is_totp_enabled = Column(Boolean, default=False)
 
     accounts = relationship("Account", back_populates="owner")
     content_assets = relationship("ContentAsset", back_populates="owner")
