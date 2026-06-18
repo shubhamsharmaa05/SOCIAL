@@ -8,7 +8,7 @@ const CalendarPage = () => {
     <div className="space-y-6 h-full flex flex-col">
       <div>
         <h1 className="text-3xl font-bold text-white tracking-tight">Content Calendar</h1>
-        <p className="text-zinc-400 mt-1">Drag and drop to schedule your content.</p>
+        <p className="text-[#A8A8A8] mt-1">Drag and drop to schedule your content.</p>
       </div>
 
       <div className="glass-panel p-4 rounded-xl flex-1 overflow-hidden custom-calendar">

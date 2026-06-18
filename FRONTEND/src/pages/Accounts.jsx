@@ -32,12 +32,12 @@ const Accounts = () => {
           <Share2 className="text-[#F50057] w-8 h-8" />
           Connected Accounts
         </h1>
-        <p className="text-zinc-400 mt-1">Manage all your social media connections in one place. Support for multiple emails.</p>
+        <p className="text-[#A8A8A8] mt-1">Manage all your social media connections in one place. Support for multiple emails.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {platforms.map((platform, i) => (
-          <div key={i} className={`glass-card p-6 border ${platform.connected ? 'border-primary/20 bg-primary/5' : 'border-white/5'}`}>
+          <div key={i} className={`glass-card p-6 border ${platform.connected ? 'border-primary/20 bg-primary/5' : 'border-[#363636]'}`}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-lg text-white">{platform.name}</h3>
               {platform.connected ? (
@@ -51,7 +51,7 @@ const Accounts = () => {
               )}
             </div>
             
-            <p className="text-sm text-zinc-400 mb-6">
+            <p className="text-sm text-[#A8A8A8] mb-6">
               {platform.connected ? `Posting as ${platform.account}` : "Connect your account to enable auto-publishing."}
             </p>
             
@@ -60,7 +60,7 @@ const Accounts = () => {
               disabled={connectingId === platform.id}
               className={`w-full py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
               platform.connected 
-                ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10' 
+                ? 'bg-white/5 hover:bg-white/10 text-white border border-[#363636]' 
                 : 'insta-gradient text-white hover:opacity-90  disabled:opacity-70 disabled:cursor-not-allowed'
             }`}>
               {connectingId === platform.id ? (

@@ -24,7 +24,7 @@ const Topbar = () => {
       sx={{
         backgroundColor: "rgba(0, 0, 0, 0.4)",
         backdropFilter: "blur(12px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
+        borderBottom: "1px solid #363636",
         zIndex: 20,
       }}
     >
@@ -55,7 +55,7 @@ const Topbar = () => {
               py: 0.5,
               "&:focus-within": {
                 borderColor: "primary.main",
-                boxShadow: "0 0 0 1px rgba(99, 102, 241, 0.5)",
+                boxShadow: "0 0 0 1px #363636",
               },
             }}
           >

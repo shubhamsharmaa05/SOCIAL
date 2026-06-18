@@ -23,7 +23,7 @@ const Register = () => {
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 selection:bg-primary/30 relative">
       <button 
         onClick={() => navigate(-1)}
-        className="absolute top-8 left-8 flex items-center gap-2 text-zinc-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10"
+        className="absolute top-8 left-8 flex items-center gap-2 text-[#A8A8A8] hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-[#363636]"
       >
         <ChevronLeft className="w-4 h-4" /> Back
       </button>
@@ -40,9 +40,9 @@ const Register = () => {
           </span>
         </div>
 
-        <div className="glass-panel p-8 rounded-2xl border border-white/10 ">
+        <div className="glass-panel p-8 rounded-2xl border border-[#363636] ">
           <h2 className="text-2xl font-bold mb-2">Create an Account</h2>
-          <p className="text-zinc-400 mb-8 text-sm">Join Social and automate your social presence.</p>
+          <p className="text-[#A8A8A8] mb-8 text-sm">Join Social and automate your social presence.</p>
 
           {error && (
             <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center gap-3">
@@ -53,7 +53,7 @@ const Register = () => {
 
 
 
-          <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-white/10 hover:border-white/20 transition-all flex justify-center">
+          <div className="w-full h-[46px] rounded-xl overflow-hidden shadow-sm border border-[#363636] hover:border-white/20 transition-all flex justify-center">
             <GoogleOAuthProvider clientId="511601982868-f0v2mrflkbgn96e4lo167fhann6l5i5t.apps.googleusercontent.com">
               <GoogleLogin
                 onSuccess={async (credentialResponse) => {
@@ -85,7 +85,7 @@ const Register = () => {
           </div>
           
           
-          <div className="mt-8 text-center text-sm text-zinc-400">
+          <div className="mt-8 text-center text-sm text-[#A8A8A8]">
             Already have an account? <Link to="/login" className="text-[#F50057] hover:underline font-medium">Log in</Link>
           </div>
         </div>

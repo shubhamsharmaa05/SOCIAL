@@ -21,7 +21,7 @@ const Landing = () => {
             So<span className="text-[#F50057]">cial</span>
           </span>
         </Link>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-[#A8A8A8]">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
           <a href="#testimonials" className="hover:text-white transition-colors">Customers</a>
           <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
@@ -30,14 +30,14 @@ const Landing = () => {
           {isAuthenticated ? (
             <>
               <button onClick={logout} className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">Log out</button>
-              <Link to="/dashboard" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
+              <Link to="/dashboard" className="bg-white/5 hover:bg-white/10 border border-[#363636] text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
                 Dashboard
               </Link>
             </>
           ) : (
             <>
               <Link to="/login" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">Log in</Link>
-              <Link to="/register" className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
+              <Link to="/register" className="bg-white/5 hover:bg-white/10 border border-[#363636] text-white px-5 py-2 rounded-lg text-sm font-medium transition-all ">
                 Get Started
               </Link>
             </>
@@ -47,7 +47,7 @@ const Landing = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 text-center max-w-5xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-[#F50057] mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-[#363636] text-xs font-medium text-[#F50057] mb-8">
           <Sparkles className="w-3 h-3" />
           <span>The next generation of Social Media Management</span>
         </div>
@@ -55,22 +55,22 @@ const Landing = () => {
           Your AI-Powered <br/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary">Social Command Center</span>
         </h1>
-        <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto mb-10">
+        <p className="text-lg md:text-xl text-[#A8A8A8] max-w-2xl mx-auto mb-10">
           Stop scheduling. Start growing. Let AI analyze, categorize, and autonomously publish your best content at the perfect time.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link to="/dashboard" className="insta-gradient text-white hover:opacity-90 px-8 py-4 rounded-xl font-bold text-lg transition-colors  flex items-center gap-2 w-full sm:w-auto justify-center">
             Enter Dashboard <ArrowRight className="w-5 h-5" />
           </Link>
-          <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all w-full sm:w-auto">
+          <button className="bg-white/5 hover:bg-white/10 border border-[#363636] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all w-full sm:w-auto">
             View Demo
           </button>
         </div>
         
         {/* Mock UI Preview */}
-        <div className="mt-20 glass-panel p-2 md:p-4 rounded-2xl border border-white/10  mx-auto relative overflow-hidden">
+        <div className="mt-20 glass-panel p-2 md:p-4 rounded-2xl border border-[#363636]  mx-auto relative overflow-hidden">
            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
-           <div className="bg-[#050505] rounded-xl border border-white/5 h-96 flex items-center justify-center relative overflow-hidden">
+           <div className="bg-[#050505] rounded-xl border border-[#363636] h-96 flex items-center justify-center relative overflow-hidden">
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
              <LayoutDashboard className="w-24 h-24 text-white/5" />
            </div>
@@ -81,7 +81,7 @@ const Landing = () => {
       <section id="features" className="py-24 px-8 max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Everything you need to scale</h2>
-          <p className="text-zinc-400 max-w-xl mx-auto">A premium suite of tools designed to replace your entire social media stack.</p>
+          <p className="text-[#A8A8A8] max-w-xl mx-auto">A premium suite of tools designed to replace your entire social media stack.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
@@ -94,14 +94,14 @@ const Landing = () => {
                 <feature.icon className="w-6 h-6 text-[#F50057]" />
               </div>
               <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-zinc-400 leading-relaxed">{feature.desc}</p>
+              <p className="text-[#A8A8A8] leading-relaxed">{feature.desc}</p>
             </div>
           ))}
         </div>
       </section>
       
       {/* Footer */}
-      <footer className="border-t border-white/5 py-12 text-center text-zinc-500 text-sm">
+      <footer className="border-t border-[#363636] py-12 text-center text-zinc-500 text-sm">
         <p>&copy; 2026 Social. All rights reserved.</p>
       </footer>
     </div>

@@ -19,17 +19,17 @@ const Analytics = () => {
           <BarChart3 className="text-[#F50057] w-8 h-8" />
           Analytics Dashboard
         </h1>
-        <p className="text-zinc-400 mt-1">AI-powered insights into your content performance.</p>
+        <p className="text-[#A8A8A8] mt-1">AI-powered insights into your content performance.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="glass-card p-6">
-          <h3 className="text-sm font-medium text-zinc-400 mb-2">Total Impressions</h3>
+          <h3 className="text-sm font-medium text-[#A8A8A8] mb-2">Total Impressions</h3>
           <p className="text-3xl font-bold text-white">124.5K</p>
           <span className="text-emerald-400 text-sm flex items-center mt-2"><TrendingUp className="w-4 h-4 mr-1" /> +12.5% this week</span>
         </div>
         <div className="glass-card p-6">
-          <h3 className="text-sm font-medium text-zinc-400 mb-2">Avg Engagement Rate</h3>
+          <h3 className="text-sm font-medium text-[#A8A8A8] mb-2">Avg Engagement Rate</h3>
           <p className="text-3xl font-bold text-white">4.8%</p>
           <span className="text-emerald-400 text-sm flex items-center mt-2"><TrendingUp className="w-4 h-4 mr-1" /> +0.4% this week</span>
         </div>

@@ -51,30 +51,30 @@ const Sidebar = () => {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          backgroundColor: "#050505",
-          borderRight: "1px solid rgba(255, 255, 255, 0.05)",
+          backgroundColor: "#000000",
+          borderRight: "1px solid #363636",
         },
       }}
     >
-      <Box sx={{ height: 64, display: "flex", alignItems: "center", px: 3, borderBottom: "1px solid rgba(255, 255, 255, 0.05)" }}>
+      <Box sx={{ height: 64, display: "flex", alignItems: "center", px: 3, borderBottom: "1px solid #363636" }}>
         <Link to="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
           <Box
             sx={{
               width: 32,
               height: 32,
               borderRadius: 2,
-              backgroundColor: "rgba(99, 102, 241, 0.2)",
+              backgroundColor: "#121212",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid rgba(99, 102, 241, 0.5)",
-              boxShadow: "0 0 15px rgba(99, 102, 241, 0.3)",
+              border: "1px solid #363636",
+              boxShadow: "none",
             }}
           >
             <AutoAwesomeIcon sx={{ fontSize: 16, color: "primary.main" }} />
           </Box>
           <Typography variant="h6" fontWeight="bold" color="text.primary" sx={{ letterSpacing: "-0.02em" }}>
-            Growth <Box component="span" sx={{ color: "primary.main" }}>cial</Box>
+            So<Box component="span" sx={{ color: "primary.main" }}>cial</Box>
           </Typography>
         </Link>
       </Box>
@@ -93,7 +93,7 @@ const Sidebar = () => {
                   borderRadius: 2,
                   py: 1,
                   "&.active": {
-                    backgroundColor: "rgba(99, 102, 241, 0.1)",
+                    backgroundColor: "#262626",
                     color: "primary.main",
                     "& .MuiListItemIcon-root": { color: "primary.main" },
                     "&::before": {
@@ -120,9 +120,9 @@ const Sidebar = () => {
         </List>
       </Box>
 
-      <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.05)" }} />
+      <Divider sx={{ borderColor: "#363636" }} />
       {user && (
-        <Box sx={{ p: 2, display: "flex", alignItems: "center", gap: 1.5, borderBottom: "1px solid rgba(255, 255, 255, 0.05)" }}>
+        <Box sx={{ p: 2, display: "flex", alignItems: "center", gap: 1.5, borderBottom: "1px solid #363636" }}>
           <img src={user.picture || `https://ui-avatars.com/api/?name=${user.full_name}&background=random`} alt={user.full_name} className="w-10 h-10 rounded-full" />
           <Box>
             <Typography variant="body2" fontWeight="bold" color="text.primary">
@@ -137,7 +137,7 @@ const Sidebar = () => {
       <Box sx={{ p: 2 }}>
         <List disablePadding>
           <ListItem disablePadding sx={{ mb: 0.5 }}>
-            <ListItemButton component={NavLink} to="/settings" sx={{ borderRadius: 2, py: 1, "&.active": { backgroundColor: "rgba(99, 102, 241, 0.1)", color: "primary.main", "& .MuiListItemIcon-root": { color: "primary.main" } } }}>
+            <ListItemButton component={NavLink} to="/settings" sx={{ borderRadius: 2, py: 1, "&.active": { backgroundColor: "#262626", color: "primary.main", "& .MuiListItemIcon-root": { color: "primary.main" } } }}>
               <ListItemIcon sx={{ minWidth: 40, color: "text.secondary" }}>
                 <SettingsIcon fontSize="small" />
               </ListItemIcon>
