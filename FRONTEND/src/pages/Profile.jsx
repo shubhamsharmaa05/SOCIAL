@@ -12,10 +12,10 @@ const Profile = () => {
   const [qrCodeUrl, setQrCodeUrl] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
 
-  const firstName = user?.given_name || user?.name?.split(' ')[0] || "Guest";
-  const lastName = user?.family_name || user?.name?.split(' ').slice(1).join(' ') || "";
+  const firstName = user?.first_name || user?.given_name || user?.name?.split(' ')[0] || user?.full_name?.split(' ')[0] || "Guest";
+  const lastName = user?.last_name || user?.family_name || user?.name?.split(' ').slice(1).join(' ') || user?.full_name?.split(' ').slice(1).join(' ') || "";
   const email = user?.email || "";
-  const fullName = user?.name || `${firstName} ${lastName}`.trim();
+  const fullName = user?.full_name || user?.name || `${firstName} ${lastName}`.trim();
   const profilePicture = user?.picture || null;
 
   const handleUpdatePassword = async () => {

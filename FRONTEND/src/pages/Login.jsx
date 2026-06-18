@@ -74,6 +74,8 @@ const Login = () => {
                       email: decoded.email,
                       google_id: decoded.sub,
                       full_name: decoded.name,
+                      first_name: decoded.given_name,
+                      last_name: decoded.family_name,
                       picture: decoded.picture
                     };
                     const user = await authService.googleLogin(profileData);

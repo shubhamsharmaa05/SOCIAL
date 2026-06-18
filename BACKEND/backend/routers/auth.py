@@ -21,6 +21,8 @@ def google_login(login_data: schemas.GoogleLogin, db: Session = Depends(get_db))
         db_user.google_id = login_data.google_id
         db_user.picture = login_data.picture
         db_user.full_name = login_data.full_name
+        db_user.first_name = login_data.first_name
+        db_user.last_name = login_data.last_name
         db.commit()
         db.refresh(db_user)
         return db_user
@@ -30,6 +32,8 @@ def google_login(login_data: schemas.GoogleLogin, db: Session = Depends(get_db))
         email=login_data.email,
         google_id=login_data.google_id,
         full_name=login_data.full_name,
+        first_name=login_data.first_name,
+        last_name=login_data.last_name,
         picture=login_data.picture
     )
     db.add(new_user)

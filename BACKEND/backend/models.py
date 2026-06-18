@@ -11,6 +11,8 @@ class User(Base):
     hashed_password = Column(String, nullable=True)
     google_id = Column(String, unique=True, index=True, nullable=True)
     full_name = Column(String, nullable=True)
+    first_name = Column(String, nullable=True)
+    last_name = Column(String, nullable=True)
     picture = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
     totp_secret = Column(String, nullable=True)
