@@ -41,7 +41,7 @@ const Recommendations = () => {
                 </div>
 
                 <div className="flex gap-3 mt-4">
-                  <button className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-[0_0_10px_rgba(226,175,176,0.2)]">
+                  <button className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-[0_0_10px_rgba(255,107,107,0.2)]">
                     <CheckCircle2 className="w-4 h-4" /> Approve & Schedule
                   </button>
                   <button className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-white px-4 py-2 rounded-lg font-medium transition-colors border border-white/10">

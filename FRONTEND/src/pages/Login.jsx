@@ -42,11 +42,11 @@ const Login = () => {
       
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(226,175,176,0.3)]">
+          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(255,107,107,0.3)]">
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <span className="font-bold text-2xl tracking-tight text-white drop-shadow-md">
-            Growth <span className="text-primary">OS</span>
+            So<span className="text-primary">cial</span>
           </span>
         </div>
 

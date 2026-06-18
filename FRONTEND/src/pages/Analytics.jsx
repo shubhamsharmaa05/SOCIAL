@@ -49,9 +49,9 @@ const Analytics = () => {
             <YAxis stroke="#ffffff50" tick={{fill: '#ffffff50'}} axisLine={false} tickLine={false} />
             <Tooltip 
               contentStyle={{ backgroundColor: '#0a0a0a', borderColor: '#ffffff10', borderRadius: '8px', color: '#fff' }}
-              itemStyle={{ color: '#E2AFB0' }}
+              itemStyle={{ color: '#FF6B6B' }}
             />
-            <Line type="monotone" dataKey="views" stroke="#E2AFB0" strokeWidth={3} dot={{r: 4, fill: '#0a0a0a', strokeWidth: 2}} activeDot={{r: 6}} />
+            <Line type="monotone" dataKey="views" stroke="#FF6B6B" strokeWidth={3} dot={{r: 4, fill: '#0a0a0a', strokeWidth: 2}} activeDot={{r: 6}} />
             <Line type="monotone" dataKey="engagement" stroke="#ffffff50" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>

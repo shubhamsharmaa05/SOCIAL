@@ -32,17 +32,17 @@ const Register = () => {
       
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(226,175,176,0.3)]">
+          <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(255,107,107,0.3)]">
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <span className="font-bold text-2xl tracking-tight text-white drop-shadow-md">
-            Growth <span className="text-primary">OS</span>
+            So<span className="text-primary">cial</span>
           </span>
         </div>
 
         <div className="glass-panel p-8 rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <h2 className="text-2xl font-bold mb-2">Create an Account</h2>
-          <p className="text-zinc-400 mb-8 text-sm">Join Growth OS and automate your social presence.</p>
+          <p className="text-zinc-400 mb-8 text-sm">Join Social and automate your social presence.</p>
 
           {error && (
             <div className="mb-6 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center gap-3">

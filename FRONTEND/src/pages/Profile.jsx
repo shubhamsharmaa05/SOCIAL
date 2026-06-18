@@ -87,7 +87,7 @@ const Profile = () => {
         {/* Left Column: Avatar & Basic Info */}
         <div className="glass-panel p-6 rounded-xl flex flex-col items-center text-center space-y-4">
           <div className="relative group cursor-pointer">
-            <div className="w-32 h-32 rounded-full bg-zinc-800 border-2 border-primary/50 overflow-hidden flex items-center justify-center relative shadow-[0_0_20px_rgba(226,175,176,0.2)]">
+            <div className="w-32 h-32 rounded-full bg-zinc-800 border-2 border-primary/50 overflow-hidden flex items-center justify-center relative shadow-[0_0_20px_rgba(255,107,107,0.2)]">
                {profilePicture ? (
                  <img src={profilePicture} alt="Profile" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                ) : (

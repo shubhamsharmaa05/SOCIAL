@@ -23,7 +23,7 @@ const CalendarPage = () => {
           }}
           height="100%"
           events={[
-            { title: 'IG Reel', date: '2026-06-12', backgroundColor: '#E2AFB0', borderColor: '#E2AFB0' },
+            { title: 'IG Reel', date: '2026-06-12', backgroundColor: '#FF6B6B', borderColor: '#FF6B6B' },
             { title: 'X Thread', date: '2026-06-14', backgroundColor: '#27272a', borderColor: '#3f3f46' }
           ]}
           themeSystem="standard"

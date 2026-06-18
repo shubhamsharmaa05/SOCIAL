@@ -74,7 +74,7 @@ const Sidebar = () => {
             <AutoAwesomeIcon sx={{ fontSize: 16, color: "primary.main" }} />
           </Box>
           <Typography variant="h6" fontWeight="bold" color="text.primary" sx={{ letterSpacing: "-0.02em" }}>
-            Growth <Box component="span" sx={{ color: "primary.main" }}>OS</Box>
+            Growth <Box component="span" sx={{ color: "primary.main" }}>cial</Box>
           </Typography>
         </Link>
       </Box>

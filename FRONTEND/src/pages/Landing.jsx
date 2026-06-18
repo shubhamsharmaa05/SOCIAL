@@ -14,11 +14,11 @@ const Landing = () => {
       {/* Navbar */}
       <nav className="h-20 flex items-center justify-between px-8 max-w-7xl mx-auto z-10 relative">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(226,175,176,0.3)]">
+          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/50 shadow-[0_0_15px_rgba(255,107,107,0.3)]">
             <Sparkles className="w-4 h-4 text-primary" />
           </div>
           <span className="font-bold text-xl tracking-tight text-white drop-shadow-md">
-            Growth <span className="text-primary">OS</span>
+            So<span className="text-primary">cial</span>
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
@@ -59,7 +59,7 @@ const Landing = () => {
           Stop scheduling. Start growing. Let AI analyze, categorize, and autonomously publish your best content at the perfect time.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link to="/dashboard" className="bg-primary hover:bg-primary/90 text-black px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-[0_0_20px_rgba(226,175,176,0.4)] flex items-center gap-2 w-full sm:w-auto justify-center">
+          <Link to="/dashboard" className="bg-primary hover:bg-primary/90 text-black px-8 py-4 rounded-xl font-bold text-lg transition-colors shadow-[0_0_20px_rgba(255,107,107,0.4)] flex items-center gap-2 w-full sm:w-auto justify-center">
             Enter Dashboard <ArrowRight className="w-5 h-5" />
           </Link>
           <button className="bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all w-full sm:w-auto">
@@ -102,7 +102,7 @@ const Landing = () => {
       
       {/* Footer */}
       <footer className="border-t border-white/5 py-12 text-center text-zinc-500 text-sm">
-        <p>&copy; 2026 Growth OS. All rights reserved.</p>
+        <p>&copy; 2026 Social. All rights reserved.</p>
       </footer>
     </div>
   );

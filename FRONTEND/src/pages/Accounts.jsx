@@ -61,7 +61,7 @@ const Accounts = () => {
               className={`w-full py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 ${
               platform.connected 
                 ? 'bg-white/5 hover:bg-white/10 text-white border border-white/10' 
-                : 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_10px_rgba(226,175,176,0.2)] disabled:opacity-70 disabled:cursor-not-allowed'
+                : 'bg-primary hover:bg-primary/90 text-white shadow-[0_0_10px_rgba(255,107,107,0.2)] disabled:opacity-70 disabled:cursor-not-allowed'
             }`}>
               {connectingId === platform.id ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Requesting Access...</>
