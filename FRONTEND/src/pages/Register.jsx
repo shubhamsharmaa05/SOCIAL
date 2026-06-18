@@ -20,7 +20,7 @@ const Register = () => {
 
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center p-4 selection:bg-primary/30 relative">
+    <div className="min-h-screen bg-transparent text-white flex items-center justify-center p-4 selection:bg-primary/30 relative">
       <button 
         onClick={() => navigate(-1)}
         className="absolute top-8 left-8 flex items-center gap-2 text-[#A8A8A8] hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-[#363636]"

@@ -110,7 +110,7 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply bg-background text-foreground;
+    @apply insta-gradient text-foreground min-h-screen background-fixed;
     /* Force dark theme globally */
     color-scheme: dark;
     }
@@ -146,10 +146,10 @@
   }
   
   .glass-panel {
-    @apply bg-[#121212] border border-[#363636];
+    @apply bg-black/60 backdrop-blur-xl border border-white/20;
   }
   .glass-card {
-    @apply bg-[#121212] border border-[#363636] rounded-xl transition-all duration-300;
+    @apply bg-black/50 backdrop-blur-xl border border-white/20 rounded-xl transition-all duration-300;
   }
   .glass-card:hover {
     @apply border-[#A8A8A8];

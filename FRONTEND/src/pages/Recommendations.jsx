@@ -35,7 +35,7 @@ const Recommendations = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                 
-                <div className="bg-black/50 border border-[#363636] rounded-lg p-3 mt-4">
+                <div className="bg-transparent/50 border border-[#363636] rounded-lg p-3 mt-4">
                   <p className="text-sm text-[#A8A8A8] mb-2 font-medium">AI Generated Caption:</p>
                   <p className="text-sm text-zinc-300 italic">"Ever wondered what goes into creating seamless user experiences? 🎨 Here's a sneak peek into our studio... #Design #UX #Creative"</p>
                 </div>

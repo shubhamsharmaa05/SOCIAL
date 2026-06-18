@@ -16,8 +16,8 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     background: {
-      default: '#030712', // Very dark slate (near black) for deep space look
-      paper: 'rgba(17, 24, 39, 0.7)', // Slate 900 with transparency for glass effect
+      default: 'transparent',
+      paper: 'transparent',
     },
     text: {
       primary: '#F9FAFB', // Gray 50
@@ -42,7 +42,7 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundColor: '#030712', // Solid flat dark background
+          backgroundColor: 'transparent', // Allow global gradient to show through
         },
         '*::-webkit-scrollbar': {
           display: 'none',

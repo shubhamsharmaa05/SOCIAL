@@ -7,7 +7,7 @@ const Landing = () => {
   const logout = useAuthStore(state => state.logout);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-primary/30">
+    <div className="min-h-screen bg-transparent text-white selection:bg-primary/30">
       {/* Background glow */}
       <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[50%] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
       

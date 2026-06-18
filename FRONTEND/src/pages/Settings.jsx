@@ -38,7 +38,7 @@ const Settings = () => {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="text-xs font-medium text-[#A8A8A8] uppercase tracking-wider mb-2 block">Max posts per day</label>
-                <select className="w-full bg-black border border-[#363636] rounded-lg p-2.5 text-white outline-none focus:border-primary">
+                <select className="w-full bg-transparent border border-[#363636] rounded-lg p-2.5 text-white outline-none focus:border-primary">
                   <option>1 post</option>
                   <option>3 posts</option>
                   <option>5 posts</option>
@@ -46,7 +46,7 @@ const Settings = () => {
               </div>
               <div>
                 <label className="text-xs font-medium text-[#A8A8A8] uppercase tracking-wider mb-2 block">Min confidence score</label>
-                <select className="w-full bg-black border border-[#363636] rounded-lg p-2.5 text-white outline-none focus:border-primary">
+                <select className="w-full bg-transparent border border-[#363636] rounded-lg p-2.5 text-white outline-none focus:border-primary">
                   <option>80%</option>
                   <option>90%</option>
                   <option>95%</option>
