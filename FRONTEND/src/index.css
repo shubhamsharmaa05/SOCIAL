@@ -110,7 +110,9 @@
     @apply border-border outline-ring/50;
     }
   body {
-    @apply insta-gradient text-foreground min-h-screen background-fixed;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background-attachment: fixed !important;
+    @apply text-foreground min-h-screen;
     /* Force dark theme globally */
     color-scheme: dark;
     }
