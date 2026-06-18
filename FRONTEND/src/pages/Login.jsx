@@ -79,8 +79,9 @@ const Login = () => {
                     const user = await authService.googleLogin(profileData);
                     handleSocialLogin('google', user);
                   } catch (err) {
-                    console.error(err);
-                    setError('Failed to authenticate with backend');
+                    console.error("Backend auth error:", err);
+                    const detail = err.response?.data?.detail || err.response?.data?.message || err.message || 'Unknown error';
+                    setError(`Backend auth failed: ${typeof detail === 'object' ? JSON.stringify(detail) : detail}`);
                   }
                 }}
                 onError={() => {
